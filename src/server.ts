@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import { UserRouter } from "./router/user.router";
+import { UserRouter } from "./user/user.router";
 import { ConfigServer } from "./config/config";
 import { Connection, createConnection } from "typeorm";
 
