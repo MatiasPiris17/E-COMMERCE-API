@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { UserService } from "../services/user.service";
 import { HttpResponse } from "../../shared/router/response/http.response";
+import { DeleteResult, UpdateResult } from "typeorm";
 
 export class UserController {
   constructor(
@@ -45,7 +46,7 @@ export class UserController {
   async updateUser(req: Request, res: Response) {
     const { id } = req.params;
     try {
-      const data = await this.userService.updateUser(
+      const data: UpdateResult = await this.userService.updateUser(
         id,
         req.body
       );
@@ -60,7 +61,7 @@ export class UserController {
 
   async deleteUser(req: Request, res: Response) {
     try {
-      const data = await this.userService.deleteUser(
+      const data: DeleteResult = await this.userService.deleteUser(
         req.params.id
       );
       if (!data.affected)

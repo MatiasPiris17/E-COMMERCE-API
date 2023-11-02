@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { HttpResponse } from "../../shared/router/response/http.response";
 import { CustomerService } from "../services/customer.service";
+import { DeleteResult, UpdateResult } from "typeorm";
 
 export class CustomerController {
   constructor(
@@ -45,7 +46,7 @@ export class CustomerController {
   async updateCustomer(req: Request, res: Response) {
     const { id } = req.params;
     try {
-      const data = await this.customerService.updateCustomer(
+      const data: UpdateResult = await this.customerService.updateCustomer(
         id,
         req.body
       );
@@ -60,7 +61,7 @@ export class CustomerController {
 
   async deleteCustomer(req: Request, res: Response) {
     try {
-      const data = await this.customerService.deleteCustomer(
+      const data: DeleteResult = await this.customerService.deleteCustomer(
         req.params.id
       );
       if (!data.affected)

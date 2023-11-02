@@ -11,8 +11,8 @@ export class UserService extends BaseService<UserEntity> {
   async findAllUser(): Promise<UserEntity[]> {
     return (await this.execRepository).find();
   }
-  async findUserById(id: string): Promise<UserEntity[] | undefined> {
-    return (await this.execRepository).findBy({ id });
+  async findUserById(id: string): Promise<UserEntity | null> {
+    return (await this.execRepository).findOneBy({ id });
   }
   async updateUser(id: string, infoUpdate: UserDTO): Promise<UpdateResult> {
     return (await this.execRepository).update(id, infoUpdate);

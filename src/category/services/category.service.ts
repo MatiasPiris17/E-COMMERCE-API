@@ -11,8 +11,8 @@ export class CategoryService extends BaseService<CategoryEntity> {
   async getAllCategories(): Promise<CategoryEntity[]> {
     return (await this.execRepository).find();
   }
-  async getCategoryById(id: string): Promise<CategoryEntity[]> {
-    return (await this.execRepository).findBy({ id });
+  async getCategoryById(id: string): Promise<CategoryEntity | null> {
+    return (await this.execRepository).findOneBy({ id });
   }
 
   async createCategory(body: CategoryDTO): Promise<CategoryEntity> {
