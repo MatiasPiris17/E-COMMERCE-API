@@ -6,6 +6,7 @@ import { ConfigServer } from "./config/config";
 import { PurchaseRouter } from "./purchase/purchase.router";
 import { PurchaseProductRouter } from "./purchase/purchase-product.route";
 import { ProductRoute } from "./product/product.route";
+import { CustomerRouter } from "./customer/customer.router";
 
 class ServerBootstrap extends ConfigServer {
   public app: express.Application = express();
@@ -31,7 +32,8 @@ class ServerBootstrap extends ConfigServer {
       new UserRouter().router,
       new PurchaseRouter().router,
       new PurchaseProductRouter().router,
-      new ProductRoute().router
+      new ProductRoute().router,
+      new CustomerRouter().router
     ];
   }
 
