@@ -3,6 +3,8 @@ import cors from "cors";
 import morgan from "morgan";
 import { UserRouter } from "./user/user.router";
 import { ConfigServer } from "./config/config";
+import { PurchaseRouter } from "./purchase/purchase.router";
+import { PurchaseProductRouter } from "./purchase/purchase-product.route";
 
 class ServerBootstrap extends ConfigServer {
   public app: express.Application = express();
@@ -13,7 +15,7 @@ class ServerBootstrap extends ConfigServer {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
 
-    this.dbConnect()
+    this.dbConnect();
 
     this.app.use(morgan("dev"));
     this.app.use(cors());
@@ -24,7 +26,11 @@ class ServerBootstrap extends ConfigServer {
   }
 
   routers(): Array<express.Router> {
-    return [new UserRouter().router];
+    return [
+      new UserRouter().router,
+      new PurchaseRouter().router,
+      new PurchaseProductRouter().router,
+    ];
   }
 
   public listen() {
