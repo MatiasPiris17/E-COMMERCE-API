@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { HttpResponse } from "../../shared/router/response/http.response";
 import { ProductService } from "../services/product.service";
-import { DeleteResult, UpdateResult } from "typeorm";
 
 export class ProductController {
   constructor(
@@ -48,7 +47,7 @@ export class ProductController {
   async updateProduct(req: Request, res: Response) {
     const { id } = req.params;
     try {
-      const data: UpdateResult = await this.productService.updateProduct(
+      const data = await this.productService.updateProduct(
         id,
         req.body
       );
@@ -67,7 +66,7 @@ export class ProductController {
 
   async deleteProduct(req: Request, res: Response) {
     try {
-      const data: DeleteResult = await this.productService.deleteProduct(
+      const data = await this.productService.deleteProduct(
         req.params.id
       );
 

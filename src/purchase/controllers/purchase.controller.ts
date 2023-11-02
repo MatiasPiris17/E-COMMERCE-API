@@ -1,7 +1,5 @@
-// import { UserService } from "../services/user.service";
 import { PurchaseService } from "../services/purchase.service";
 import { HttpResponse } from "../../shared/router/response/http.response";
-import { DeleteResult, UpdateResult } from "typeorm";
 import { Request, Response } from "express";
 
 export class PurchaseController {
@@ -50,7 +48,7 @@ export class PurchaseController {
   async updatePurchase(req: Request, res: Response) {
     const { id } = req.params;
     try {
-      const data: UpdateResult = await this.purchaseService.updatePurchase(
+      const data = await this.purchaseService.updatePurchase(
         id,
         req.body
       );
@@ -68,7 +66,7 @@ export class PurchaseController {
 
   async deletePurchase(req: Request, res: Response) {
     try {
-      const data: DeleteResult = await this.purchaseService.deletePurchase(
+      const data = await this.purchaseService.deletePurchase(
         req.params.id
       );
       if (!data.affected)

@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { DeleteResult, UpdateResult } from "typeorm";
 import { HttpResponse } from "../../shared/router/response/http.response";
 import { PurchaseProductService } from "../services/purchase-product.service";
 
@@ -50,7 +49,7 @@ export class PurchaseProductController {
   async updatePurchaseProduct(req: Request, res: Response) {
     const { id } = req.params;
     try {
-      const data: UpdateResult =
+      const data =
         await this.purchaseProductService.updatePurchaseProduct(id, req.body);
       if (!data.affected)
         return this.httpResponse.NotFound(res, "Hay un error en actualizar");
@@ -63,7 +62,7 @@ export class PurchaseProductController {
 
   async deletePurchaseProduct(req: Request, res: Response) {
     try {
-      const data: DeleteResult =
+      const data =
         await this.purchaseProductService.deletePuchaseProduct(req.params.id);
       if (!data.affected)
         return this.httpResponse.NotFound(
