@@ -7,6 +7,7 @@ import { PurchaseRouter } from "./purchase/purchase.router";
 import { PurchaseProductRouter } from "./purchase/purchase-product.route";
 import { ProductRoute } from "./product/product.route";
 import { CustomerRouter } from "./customer/customer.router";
+import { CategoryRouter } from "./category/category.route";
 
 class ServerBootstrap extends ConfigServer {
   public app: express.Application = express();
@@ -33,7 +34,8 @@ class ServerBootstrap extends ConfigServer {
       new PurchaseRouter().router,
       new PurchaseProductRouter().router,
       new ProductRoute().router,
-      new CustomerRouter().router
+      new CustomerRouter().router,
+      new CategoryRouter().router
     ];
   }
 

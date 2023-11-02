@@ -28,6 +28,6 @@ export class CustomerService extends BaseService<CustomerEntity> {
   }
 
   async deleteCustomer(id: string): Promise<DeleteResult> {
-    return (await this.execRepository).delete(id);
+    return (await this.execRepository).delete({id});
   }
 }

@@ -7,8 +7,6 @@ export class CategoryEntity extends BaseEntity {
     @Column()
     CategoryName!: string;
 
-    // colorBadge?:ColorBadge;
-
     @ManyToOne(() => ProductEntity, (product) => product.category)
     products!: ProductEntity[];
 }

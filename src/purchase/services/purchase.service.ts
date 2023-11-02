@@ -21,6 +21,6 @@ export class PurchaseService extends BaseService<PurchaseEntity> {
     return (await this.execRepository).save(body);
   }
   async deletePurchase(id: string): Promise<DeleteResult> {
-    return (await this.execRepository).delete(id);
+    return (await this.execRepository).delete({id});
   }
 }
