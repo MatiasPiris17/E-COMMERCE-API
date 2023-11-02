@@ -12,9 +12,9 @@ export class ProductEntity extends BaseEntity {
   description!: string;
 
   @Column()
-  price!: string;
+  price!: number;
 
-  @ManyToOne(() => CategoryEntity, (product) => product.category)
+  @ManyToOne(() => CategoryEntity, (category) => category.products)
   @JoinColumn({ name: "category_id" })
   category!: CategoryEntity;
 
