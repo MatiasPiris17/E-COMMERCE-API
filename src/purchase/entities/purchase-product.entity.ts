@@ -7,7 +7,7 @@ import { BaseEntity } from "../../config/base.entity";
 @Entity({ name: "purchases_products" })
 export class PurchaseProductEntity extends BaseEntity {
   @Column()
-  cuantityProduct!: number;
+  quantityProduct!: number;
 
   @Column()
   TotalPrice!: number;
